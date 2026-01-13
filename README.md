@@ -1,62 +1,41 @@
-> Introduction (please delete after reading):  
-[standard-GEM](https://github.com/MetabolicAtlas/standard-GEM) is a template repository that aims to standardize the format of genome-scale metabolic models (GEMs) versioned with git. In addition to encouraging the open-sourcing of GEMs, it facilitates the import of GEMs into databases and online websites. Moreover, it provides the community with a familiar structure that is easy to adopt through this repository itself. The template comes with a set of requirements and recommendations, packaged as to-do items in a hidden Markdown file in this repository `.standard-GEM.md`. After downloading this repository, or using it as a template, those to-do items provide guidance to how adherence to the standard can be obtained.
-
-> Instructions for this `README` (please delete after reading):  
-This is the `README.md` template provided by [standard-GEM](https://github.com/MetabolicAtlas/standard-GEM) and was crafted to cover most use-cases.  
-Feel free to edit this template `README`. Blanks are indicated by `{{ test }}`. One may use a search function to find these `{{`. Here are some examples of blanks used throughout this file: `{{organization or username}}` is the organization name or username for this GitHub repository, eg. `SysBioChalmers`; `{{repository name}}` is the name of this GitHub repository, eg. `yeast-GEM`.  
-If you find this template does not fit your needs, we would appreciate if you could report this by creating a new issue on [standard-GEM](https://github.com/MetabolicAtlas/standard-GEM/issues).
-
-
-## {{repository name}}: {{repository description}}
-
-[![Version](https://badge.fury.io/gh/{{organization or username}}%2F{{repository name}}.svg)](https://badge.fury.io/gh/sysbiochalmers/yeast-gem)  
-[![Zenodo](https://zenodo.org/badge/{{Zenodo ID}}.svg)](https://zenodo.org/badge/latestdoi/{{Zenodo ID}})  
-[![Gitter chat](https://badges.gitter.im/{{organization or username}}/{{repository name}}.svg)](https://gitter.im/{{organization or username}}/{{repository name}})
-
+## sint-GEM: Genome-scale metabolic of the yeast Sungouiella intermedia
 
 #### Description
 
-{{ fill in a short description or the paper abstract }}
-
+Genome-scale metabolic model of the non-conventional yeast Sungouiella intermedia (formerly Candida intermedia), reconstructed for investigation of its lactose and galactose metabolism and its potential as a future cell factory on lactose-rich industrial side-streams.
 
 #### Citation
 
-{{ provide the citation once available, for example:
-  > Lu, H., Li, F., Sánchez, B.J. et al (2019). A consensus S. cerevisiae metabolic model Yeast8 and its ecosystem for comprehensively probing cellular metabolism. Nat Commun 10, 3586 [doi:10.1038/s41467-019-11581-3](https://doi.org/10.1038/s41467-019-11581-3)
-
-}}
-
+  > Peri, K.. V. R., Domenzain, I. et al (2025). Model-Driven Elucidation of Lactose and Galactose Metabolism via Oxidoreductive Pathway in Sungouiella intermedia for Cell Factory Applications. bioRXIV, 2024. [doi:2024.11.19.624258]([https://doi.org/10.1038/s41467-019-11581-3](https://doi.org/10.1101/2024.11.19.624258))
 
 #### Keywords
 
 > Keywords are be separated by semicolons.
 > The `Model source` field contains the source(s) of the current model, eg existing GEMs. If possible, use the Markdown format to add the URL with the DOI. The (NCBI) taxonomy ID should be provided in the [format from identifiers.org](https://registry.identifiers.org/registry/taxonomy). For the genome identifier, please provide the ENA/GenBank/RefSeq identifier via *identifiers.org*, or from other sources such as PATRIC or KBase.  
 
-**Utilisation:** {{ experimental data reconstruction; multi-omics integrative analysis;, _in silico_ strain design; model template }}  
-**Field:** {{ metabolic-network reconstruction }}  
-**Type of model:** {{ reconstruction; curated }}  
-**Model source:** {{ [YeastMetabolicNetwork](http://doi.org/10.1038/nbt1492) }}  
-**Omic source:** {{ genomics; metabolomics }}  
-**Taxonomic name:** {{ _Saccharomyces cerevisiae_ }}  
-**Taxonomy ID:** {{ [taxonomy:559292](https://identifiers.org/taxonomy:559292) }}  
-**Genome ID:** {{ [insdc.gca:GCA_000146045.2](https://identifiers.org/insdc.gca:GCA_000146045.2)  }}  
-**Metabolic system:** {{ general metabolism }}  
-**Tissue:**  
-**Bioreactor:**    
-**Cell type:**  
-**Cell line:**  
-**Strain:** {{ S288C }}  
-**Condition:** {{ aerobic; glucose-limited; defined media }}  
-
+**Utilisation:** experimental data reconstruction; multi-omics integrative analysis  
+**Field:** metabolic-network reconstruction  
+**Type of model:** curated  
+**Model source:** [YeastMetabolicNetwork](http://doi.org/10.1038/nbt1492)  
+**Omic source:** genomics; transcriptomics; HPLC cultivation data    
+**Taxonomic name:** _Sungouiella intermedia_  
+**Taxonomy ID:** [taxonomy:45354](https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?command=show&mode=node&id=45354&lvl=)  
+**Genome ID:** [insdc.gca:GCA_900106125.1](https://www.ncbi.nlm.nih.gov/datasets/genome/GCA_900106125.1/)  
+**Metabolic system:** general metabolism  
+**Strain:** PYCC 4715  
+**Condition:** general
 
 ### Installation
 
-{{ Be mindful of users who do not have a typical background - provide a clear overview of the required software. Also, there might be different requirements for users and collaborators. }}
+This approach is recommended, but requires git to be installed
+In Terminal/Command Prompt, navigate to the desired installation directory and run the following Git command:
+
+`git clone --depth=1 https://github.com/SysBioChalmers/sint-GEM .git`
 
 
 ### Usage
 
-{{ Describe how to load and save the model. }}
+The model is stored and distributed both in SBML and MATLAB formats to enable utilisation with any of the standard constraint-based toolboxes such as [COBRA](https://github.com/opencobra/cobratoolbox), [RAVEN](https://github.com/SysBioChalmers/RAVEN) and [cobraPy](https://github.com/opencobra/cobrapy).
 
 
 ### Contributing
