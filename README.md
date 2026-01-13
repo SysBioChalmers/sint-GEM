@@ -10,9 +10,6 @@ Genome-scale metabolic model of the non-conventional yeast Sungouiella intermedi
 
 #### Keywords
 
-> Keywords are be separated by semicolons.
-> The `Model source` field contains the source(s) of the current model, eg existing GEMs. If possible, use the Markdown format to add the URL with the DOI. The (NCBI) taxonomy ID should be provided in the [format from identifiers.org](https://registry.identifiers.org/registry/taxonomy). For the genome identifier, please provide the ENA/GenBank/RefSeq identifier via *identifiers.org*, or from other sources such as PATRIC or KBase.  
-
 **Utilisation:** experimental data reconstruction; multi-omics integrative analysis  
 **Field:** metabolic-network reconstruction  
 **Type of model:** curated  
@@ -30,19 +27,18 @@ Genome-scale metabolic model of the non-conventional yeast Sungouiella intermedi
 This approach is recommended, but requires git to be installed
 In Terminal/Command Prompt, navigate to the desired installation directory and run the following Git command:
 
-`git clone --depth=1 https://github.com/SysBioChalmers/sint-GEM .git`
-
+```
+git clone --depth=1 https://github.com/SysBioChalmers/sint-GEM .git
+```
 
 ### Usage
 
 The model is stored and distributed both in SBML and MATLAB formats to enable utilisation with any of the standard constraint-based toolboxes such as [COBRA](https://github.com/opencobra/cobratoolbox), [RAVEN](https://github.com/SysBioChalmers/RAVEN) and [cobraPy](https://github.com/opencobra/cobrapy).
 
-
 ### Contributing
 
 Contributions are always welcome! Please read the [contributing guideline](.github/CONTRIBUTING.md) to get started.
 
-
 ### Contributors
 
-Code contributors are reported automatically by GitHub under [Contributors](https://github.com/{{organization or username}}/{{repository name}}/graphs/contributors), while other contributions come in as [Issues](https://github.com/{{organization or username}}/{{repository name}}/issues).
+Code contributors are reported automatically by GitHub under [Contributors](https://github.com/SysBioChalmers/sint-GEM/graphs/contributors), while other contributions come in as [Issues](https://github.com/SysBioChalmers/sint-GEM/issues).
