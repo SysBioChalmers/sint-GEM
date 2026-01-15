@@ -1,6 +1,7 @@
-orthogroups = readtable('../orthoFinder/OrthoFinder/dataSEQs_vs_modelSEQs/Orthogroups/Orthogroups.txt','delimiter','\t');
+function model = correct_gene_annotation(model)
+orthogroups = readtable('../data/Orthogroups_model2Seqs.txt','delimiter','\t');
 newDataset  = getFastaIDs;
-load('../models/candida_intermedia/cintGEM_oxido_orthologs_curated.mat')
+%load('../models/cintGEM_oxido_orthologs_curated.mat')
 inconsistencies = find(contains(model.orthologues,'Seq'));
 %there were 154 inconsitencies found 14.39% of the model's genes
 anomalies = [];
@@ -69,7 +70,7 @@ model = addGenesRaven(model,genes2add);
 model.grRules = a;
 model.rxnGeneMat = b;
 model.orthologues = [model.orthologues;  genesIDs];
-model.proteins = [model.proteins; genesIDs];
+%model.proteins = [model.proteins; genesIDs];
 genes = [];
 %fix inconsistencies manually, these are
 gene = {'Seq_127'};
@@ -202,7 +203,7 @@ rxns = model.rxns;
 rxnNames = model.rxnNames;
 grRules = model.grRules;
 modelTable = table(rxns,rxnNames,formulas, grRules);
-writetable(modelTable,'../models/candida_intermedia/cintGEM_curated.txt','WriteVariableNames',true,'Delimiter','\t','QuoteStrings',false);
+writetable(modelTable,'../model/cintGEM_curated.txt','WriteVariableNames',true,'Delimiter','\t','QuoteStrings',false);
 
 %add version control
 genes = model.genes;
@@ -210,6 +211,7 @@ shortnames = model.geneShortNames;
 orthologues = model.orthologues;
 proteins = model.proteins;
 gene_table = table(genes,shortnames,orthologues,proteins);
-writetable(gene_table,'../models/candida_intermedia/gene_table_curated.txt','Delimiter','\t','QuoteStrings',false);
+writetable(gene_table,'../model/gene_table_curated.txt','Delimiter','\t','QuoteStrings',false);
 
-save('../models/candida_intermedia/cintGEM_gene_curated.mat','model')
+%save('../models/cintGEM_gene_curated.mat','model')
+end

@@ -48,8 +48,7 @@ idx = find(strcmpi(model_leloir.rxns,'r_5119'));
 model_leloir.rev(idx) = 1;
 model_leloir.lb(idx) = -1000;
 model_leloir.ub(idx) = 1000;
-model = changeMedia(model_leloir,1);
-save('../models/candida_intermedia/cint_leloir.mat','model')
+model = changeMedia_batch(model_leloir,1);
 end
  
 

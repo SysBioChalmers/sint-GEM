@@ -1,7 +1,6 @@
-function output = adjust_biomass_comp
-clear
+function model = adjust_biomass_comp(model)
 clc
-load('../../models/candida_intermedia/cintGEM_gene_curated.mat')
+%load('../../models/candida_intermedia/cintGEM_gene_curated.mat')
 %%correct reaction
 % * L-xylo-3-hexulose reductase: 'L-xylo-3-hexulose[c] + NADPH[c] + H+[c] <=> L-sorbose[c] + NADP(+)[c]'};... G0RNA2 (lxr4)
 %by this:  * L-xylo-3-hexulose reductase: 'L-xylo-3-hexulose[c] + NADPH[c] + H+[c] <=> D-glucitol[c] + NADP(+)[c]'};... G0RNA2 (lxr4)
@@ -120,15 +119,14 @@ model = setParam(model,'obj',3736,1);
 %
 sol = solveLP(model,1);
 printFluxes(model,sol.x,true)
-save('../../models/candida_intermedia/cintGEM_curated.mat','model')
-output = model;
+%save('../../models/cintGEM_curated.mat','model')
 %generate version-controllable files
 formulas = constructEquations(model);
 rxns = model.rxns;
 rxnNames = model.rxnNames;
 grRules = model.grRules;
 modelTable = table(rxns,rxnNames,formulas, grRules);
-writetable(modelTable,'../../models/candida_intermedia/cintGEM_curated.txt','WriteVariableNames',true,'Delimiter','\t','QuoteStrings',false);
+writetable(modelTable,'../../model/cintGEM_curated.txt','WriteVariableNames',true,'Delimiter','\t','QuoteStrings',false);
 
 %add version control
 genes = model.genes;
@@ -136,5 +134,5 @@ shortnames = model.geneShortNames;
 orthologues = model.orthologues;
 proteins = model.proteins;
 gene_table = table(genes,shortnames,orthologues,proteins);
-writetable(gene_table,'../../models/candida_intermedia/gene_table_curated.txt','Delimiter','\t','QuoteStrings',false);
+writetable(gene_table,'../../model/gene_table_curated.txt','Delimiter','\t','QuoteStrings',false);
 end
