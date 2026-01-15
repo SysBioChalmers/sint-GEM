@@ -1,9 +1,9 @@
 %generateCintGEM
 
-%load SBML draft model and extract information for S. cerevisiae orthologs
-%model = readCbModel('../models/candida_intermedia/Candida_intermedia.xml');
-%git clone --depth 1 https://github.com/IVANDOMENZAIN/diverseYeasts_metabolism.git
-%model = importModel('diverseYeasts_metabolism/models/candida_intermedia/Candida_intermedia.mat');
+%load draft model and extract information for S. cerevisiae orthologs
+git clone --depth 1 https://github.com/IVANDOMENZAIN/diverseYeasts_metabolism.git
+model = importModel('diverseYeasts_metabolism/models/candida_intermedia/Candida_intermedia.mat');
+rmdir('diverseYeasts_metabolism','s')
 sce_proteins = model.proteins;
 model = ravenCobraWrapper(model);
 model.proteins = sce_proteins;
