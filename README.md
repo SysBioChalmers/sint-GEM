@@ -31,6 +31,16 @@ In Terminal/Command Prompt, navigate to the desired installation directory and r
 git clone --depth=1 https://github.com/SysBioChalmers/sint-GEM .git
 ```
 
+### Reproducibility
+
+To reproduce the sint-GEM reconstruction process just navigate to the `code` directory in this repository using MATLAB, then run the reconstruction script by typing the following in the MATLAB command window:
+
+```
+generate_sintGEM
+```
+
+The resulting model files are stored in the `sint-GEM/model` directory in .MAT, SBML and .txt files to facilitate accessibility and distribution.
+
 ### Usage
 
 The model is stored and distributed both in SBML and MATLAB formats to enable utilisation with any of the standard constraint-based toolboxes such as [COBRA](https://github.com/opencobra/cobratoolbox), [RAVEN](https://github.com/SysBioChalmers/RAVEN) and [cobraPy](https://github.com/opencobra/cobrapy).
