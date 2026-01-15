@@ -1,5 +1,5 @@
 function newDataset = getFastaIDs
-dataset = readtable('../orthoFinder/data_Cint.txt','HeaderLines',0);
+dataset = readtable('../data/data_Cint.txt','HeaderLines',0);
 %Ignore lines with sequences
 dataset = dataset(contains(dataset.ThisIsAFakeHeader,'>SGZ'),:);
 %Get rid of the unnecessary characters in each column

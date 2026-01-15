@@ -1,8 +1,7 @@
-clear
+function model = mapGeneIDs(model)
 clc
-current = pwd;
 %load model
-load('../../models/candida_intermedia/cintGEM_oxido.mat');
+%load('../../models/candida_intermedia/cintGEM_oxido.mat');
 %correct gene IDs (shorter strings)
 model.genes = strrep(model.genes,'Candida_intermedia@','');
 %We've run orthofinder using the FASTA files that were used for the model
@@ -15,7 +14,7 @@ model.genes = strrep(model.genes,'Candida_intermedia@','');
 %model.orthologues
 
 %checking the presence of the unassigned genes in the orthogroups
-orthogroups     = readtable('../../orthoFinder/OrthoFinder/dataSEQs_vs_modelSEQs/Orthogroups/Orthogroups.txt','delimiter','\t');
+orthogroups     = readtable('../../data/Orthogroups.txt','delimiter','\t');
 [presence,idxs] = ismember(model.genes,orthogroups.model_Cint);
 % it works!
 idxs2 = find(presence);
@@ -29,7 +28,7 @@ model.orthologues(idxs2) = orthogroups.data_Cint(idxs);
 %let's correct that in our model
 
 %Open fasta file (the one used for RNAse1)
-dataset = readtable('../../orthoFinder/data_Cint.txt','HeaderLines',0);
+dataset = readtable('../../data/data_Cint.txt','HeaderLines',0);
 %Ignore lines with sequences
 dataset = dataset(contains(dataset.ThisIsAFakeHeader,'>SGZ'),:);
 %Get rid of the unnecessary characters in each column
@@ -99,12 +98,14 @@ shortnames = model.geneShortNames;
 orthologues = model.orthologues;
 proteins = model.proteins;
 gene_table = table(genes,shortnames,orthologues,proteins);
-writetable(gene_table,'../../models/candida_intermedia/gene_table_CintOxido_orthologues.txt','Delimiter','\t','QuoteStrings',false);
+
+writetable(gene_table,'../../model/gene_table_CintOxido_orthologues.txt','Delimiter','\t','QuoteStrings',false);
 %overwrite the model
-save('../../models/candida_intermedia/cintGEM_oxido_orthologs.mat','model');
+%save('../../models/candida_intermedia/cintGEM_oxido_orthologs.mat','model');
 
 %WARNING: WE cannot find any orthologue fo lxr4 (trichoderma reesei)
 %in the available sequence files for C. intermedia
 
 %But let's save the model
-save('../../models/candida_intermedia/cintGEM_oxido_orthologs.mat','model')
+%save('../../model//cintGEM_oxido_orthologs.mat','model')
+end

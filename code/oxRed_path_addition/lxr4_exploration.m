@@ -1,10 +1,10 @@
+function model=lxr4_exploration(model)
 %An orthofinder run comparing a T. reesei LXR4 sequence vs. the FASTA file
 %used for the model reconstruction revealed that this gene has an
 %orthologue in C. intermedia (Seq_2272)
 clc
-clear
 %Let's try to find the gene in our model
-load('../../models/candida_intermedia/cintGEM_oxido_orthologs.mat')
+%load('../../model/cintGEM_oxido_orthologs.mat')
 %search gene in model
 genePos = find(strcmpi(model.genes,'Seq_2272'));
 %The gene is present let's see if it has been detected also in our RNA
@@ -87,7 +87,7 @@ rxns = model.rxns;
 rxnNames = model.rxnNames;
 grRules = model.grRules;
 modelTable = table(rxns,rxnNames,formulas, grRules);
-writetable(modelTable,'../../models/candida_intermedia/cintGEM_oxido_orthologs_curated.txt','WriteVariableNames',true,'Delimiter','\t','QuoteStrings',false);
+writetable(modelTable,'../../model/cintGEM_oxido_orthologs_curated.txt','WriteVariableNames',true,'Delimiter','\t','QuoteStrings',false);
 
 %add version control
 genes = model.genes;
@@ -96,8 +96,8 @@ shortnames = model.geneShortNames;
 orthologues = model.orthologues;
 proteins = model.proteins;
 gene_table = table(genes,shortnames,orthologues,proteins);
-writetable(gene_table,'../../models/candida_intermedia/gene_table_CintOxido_orthologues_curated.txt','Delimiter','\t','QuoteStrings',false);
+writetable(gene_table,'../../model/gene_table_CintOxido_orthologues_curated.txt','Delimiter','\t','QuoteStrings',false);
 
-save('../../models/candida_intermedia/cintGEM_oxido_orthologs_curated.mat','model')
-
+%save('../../models/candida_intermedia/cintGEM_oxido_orthologs_curated.mat','model')
+end
 

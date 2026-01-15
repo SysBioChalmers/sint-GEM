@@ -33,7 +33,7 @@ sol1  = solveLP(model,1);
 printFluxes(model,sol1.x)
 % Introduce changes to the model
 model_oxido = addGenesRaven(model,genesToAdd);
-model_oxido.proteins = [model_oxido.proteins; genesToAdd.genes'];
+%model_oxido.proteins = [model_oxido.proteins; genesToAdd.genes'];
 model_oxido = addRxns(model_oxido,rxnsToAdd,3);
 %Evaluate if rxn can carry flux
 I  = haveFlux(model_oxido,1E-6,'ald_red_NADPH');
@@ -55,7 +55,7 @@ model_oxido.lb(index)  = 0;
 model_oxido.ub(index)  = 0;
 sol3 = solveLP(model_oxido,1);
 printFluxes(model_oxido,sol3.x)
-fluxes_2=haveFlux(model_oxido,1E-6,rxns);
+%fluxes_2=haveFlux(model_oxido,1E-6,rxns);
 %IT worked!!!! let's display results in a table
 formulas = constructEquations(model_oxido);
 %Get metabolic subSystems for each reaction
@@ -75,7 +75,7 @@ t = t((t.FC>1.001*bioFC | t.FC<0.999*bioFC),:);
 %Sort table by flux FC
 t = sortrows(t,'FC','descend');
 %Write results as a .txt file
-writetable(t,'../results/lactose_pathways_comparison_Cint.txt','delimiter','\t','QuoteStrings',false)
+%writetable(t,'../results/lactose_pathways_comparison_Cint.txt','delimiter','\t','QuoteStrings',false)
 %Compare flux distributions using a RAVEN built-in function
 followChanged(model_oxido,[sol1.x; 0; 0],sol3.x,5E-1, 1E-6, 1E-8, {'ATP'})
 % Kamesh has shared that xyl1 displays cofactor promiscuity, let's
@@ -118,6 +118,6 @@ rxns = model.rxns;
 rxnNames = model.rxnNames;
 grRules = model.grRules;
 modelTable = table(rxns,rxnNames,formulas, grRules);
-writetable(modelTable,'../models/candida_intermedia/cintGEM_oxido.txt','WriteVariableNames',true,'Delimiter','\t','QuoteStrings',false);
+%writetable(modelTable,'../models/candida_intermedia/cintGEM_oxido.txt','WriteVariableNames',true,'Delimiter','\t','QuoteStrings',false);
 cd(current)
 end
